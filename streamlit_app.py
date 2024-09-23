@@ -10,6 +10,15 @@ option = st.selectbox(
     ("Furniture", "Office Supplies", "Technology"),
 )
 
+
+options = st.multiselect(
+    "Subcategory",
+    ["Phones", "Chairs", "Storage", "Tables", "Binders", "Machines", "Accessories", "Copiers", "Bookcases", "Appliances", "Furnishings",
+    "Paper", "Supplies", "Art", "Envelopes", "Labels", "Fasteners"],
+)
+
+st.write("You selected:", options)
+
 st.write("You selected:", option)
 
 st.write("### Input Data and Examples")
