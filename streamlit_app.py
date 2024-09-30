@@ -5,10 +5,25 @@ import math
 
 st.title("Data App Assignment, on Oct 7th")
 
-option = st.selectbox(
+# Step 1: Add a drop down for Category
+category = st.selectbox(
     "Category",
-    ("Furniture", "Office Supplies", "Technology"),
+    ("Furniture", "Office Supplies", "Technology")
 )
+st.write(f"Selected Category: {category}")
+# Step 2: Add a multi-select for Sub_Category in the selected Category (1)
+sub_category_options = {
+    "Furniture": ["Chairs", "Tables", "Bookcases", "Furnishings"],
+    "Office Supplies": ["Supplies", "Storage", "Paper", "Labels", "Fasteners", "Envelopes", "Binders", "Art", "Appliances"],
+    "Technology": ["Phones", "Machines", "Copiers", "Accessories"]
+}
+sub_category = st.multiselect(
+    "Sub-Category",
+    sub_category_options[category]
+)
+
+st.write(f"Selected Sub-Categories: {sub_category}")
+
 
 
 options = st.multiselect(
