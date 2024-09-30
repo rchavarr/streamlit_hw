@@ -52,6 +52,16 @@ st.write(f"Selected Sub-Categories: {sub_category}")
 
 # Step 3: Show a line chart of sales for the selected items in (2)
 
+#Step 4: Show three metrics for the selected items in (2): total sales, total profit, and overall profit margin (%)
+    total_sales = filtered_sales_df['Sales'].sum()  # Calculate total sales
+    total_profit = filtered_sales_df['Profit'].sum()  # Calculate total profit
+    profit_margin = (total_profit / total_sales) * 100 if total_sales > 0 else 0  # Calculate profit margin (%)
+
+    # Display the metrics in Streamlit
+    st.metric(label="Total Sales", value=f"${total_sales:,.2f}")
+    st.metric(label="Total Profit", value=f"${total_profit:,.2f}")
+    st.metric(label="Profit Margin", value=f"{profit_margin:.2f}%")
+
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
 st.write("### (2) add a multi-select for Sub_Category *in the selected Category (1)* (https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)")
 st.write("### (3) show a line chart of sales for the selected items in (2)")
