@@ -76,6 +76,9 @@ if selected_sub_categories:
     st.metric(label="Total Profit", value=f"${total_profit:,.2f}")
     st.metric(label="Profit Margin (%)", value=f"{profit_margin:.2f}%")
 
+#Step 5: Use the delta option in the overal profit margin metric to show the difference between the overall average profit margin (all products across all categories
+
+
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
 st.write("### (2) add a multi-select for Sub_Category *in the selected Category (1)* (https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)")
 st.write("### (3) show a line chart of sales for the selected items in (2)")
