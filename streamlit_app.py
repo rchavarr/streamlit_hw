@@ -44,24 +44,18 @@ sub_category_options = {
     "Office Supplies": ["Supplies", "Storage", "Paper", "Labels", "Fasteners", "Envelopes", "Binders", "Art", "Appliances"],
     "Technology": ["Phones", "Machines", "Copiers", "Accessories"]
 }
-sub_category = st.multiselect(
+selected_sub_categories = st.multiselect(
     "Sub_Category",
     sub_category_options[category]
 )
 st.write(f"Selected Sub_Categories: {sub_category}")
 
 # Step 3: Show a line chart of sales for the selected items in (2)
-# Filter the DataFrame based on the selected sub_categories
-filtered_df = df[df['Sub_Category'].isin(selected_sub_categories)]
-
-# Group by month and aggregate sales
-sales_by_month = filtered_df.groupby([pd.Grouper(freq='M'), 'Sub_Category'])['Sales'].sum().unstack()
-
-# Display the resulting DataFrame
-st.dataframe(sales_by_month)
-
-# Plot the line chart with sales for each sub_category
-st.line_chart(sales_by_month)
+if selected_sub_categories:
+    filtered_df = df[df['Sub_Category'].isin(selected_sub_categories)]
+    sales_by_month = filtered_df.groupby([pd.Grouper(freq='M'), 'Sub_Category'])['Sales'].sum().unstack()
+    st.dataframe(sales_by_month)
+    st.line_chart(sales_by_month)
 
 #Step 4: Show three metrics for the selected items in (2): total sales, total profit, and overall profit margin (%)
 
