@@ -23,8 +23,6 @@ sub_category = st.multiselect(
 )
 st.write(f"Selected Sub-Categories: {sub_category}")
 
-st.write("You selected:", option)
-
 st.write("### Input Data and Examples")
 df = pd.read_csv("Superstore_Sales_utf8.csv", parse_dates=True)
 st.dataframe(df)
