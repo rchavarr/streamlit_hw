@@ -21,18 +21,7 @@ sub_category = st.multiselect(
     "Sub-Category",
     sub_category_options[category]
 )
-
 st.write(f"Selected Sub-Categories: {sub_category}")
-
-
-
-options = st.multiselect(
-    "Subcategory",
-    ["Phones", "Chairs", "Storage", "Tables", "Binders", "Machines", "Accessories", "Copiers", "Bookcases", "Appliances", "Furnishings",
-    "Paper", "Supplies", "Art", "Envelopes", "Labels", "Fasteners"],
-)
-
-st.write("You selected:", options)
 
 st.write("You selected:", option)
 
