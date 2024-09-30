@@ -52,8 +52,8 @@ st.write(f"Selected Sub-Categories: {sub_category}")
 
 #3 Show a line chart of sales for the selected items in (2)
 # Filter the data further based on the selected sub-categories
-if selected_sub_categories:
-    filtered_sales_df = filtered_df[filtered_df['Sub-Category'].isin(selected_sub_categories)]
+if sub_category:
+    filtered_sales_df = filtered_df[filtered_df['Sub-Category'].isin(sub_category)]
 
     # Ensure Order_Date is in datetime format, if not already
     filtered_sales_df["Order_Date"] = pd.to_datetime(filtered_sales_df["Order_Date"])
