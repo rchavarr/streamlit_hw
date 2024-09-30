@@ -5,26 +5,6 @@ import math
 
 st.title("Data App Assignment, on Oct 7th")
 
-# Step 1: Add a drop down for Category
-category = st.selectbox(
-    "Category",
-    ("Furniture", "Office Supplies", "Technology")
-)
-st.write(f"Selected Category: {category}")
-# Step 2: Add a multi-select for Sub_Category in the selected Category (1)
-sub_category_options = {
-    "Furniture": ["Chairs", "Tables", "Bookcases", "Furnishings"],
-    "Office Supplies": ["Supplies", "Storage", "Paper", "Labels", "Fasteners", "Envelopes", "Binders", "Art", "Appliances"],
-    "Technology": ["Phones", "Machines", "Copiers", "Accessories"]
-}
-sub_category = st.multiselect(
-    "Sub-Category",
-    sub_category_options[category]
-)
-st.write(f"Selected Sub-Categories: {sub_category}")
-
-#3 Show a line chart of sales for the selected items in (2)
-
 st.write("### Input Data and Examples")
 df = pd.read_csv("Superstore_Sales_utf8.csv", parse_dates=True)
 st.dataframe(df)
@@ -50,6 +30,26 @@ st.dataframe(sales_by_month)
 st.line_chart(sales_by_month, y="Sales")
 
 st.write("## Your additions")
+
+# Step 1: Add a drop down for Category
+category = st.selectbox(
+    "Category",
+    ("Furniture", "Office Supplies", "Technology")
+)
+st.write(f"Selected Category: {category}")
+# Step 2: Add a multi-select for Sub_Category in the selected Category (1)
+sub_category_options = {
+    "Furniture": ["Chairs", "Tables", "Bookcases", "Furnishings"],
+    "Office Supplies": ["Supplies", "Storage", "Paper", "Labels", "Fasteners", "Envelopes", "Binders", "Art", "Appliances"],
+    "Technology": ["Phones", "Machines", "Copiers", "Accessories"]
+}
+sub_category = st.multiselect(
+    "Sub-Category",
+    sub_category_options[category]
+)
+st.write(f"Selected Sub-Categories: {sub_category}")
+
+#3 Show a line chart of sales for the selected items in (2)
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
 st.write("### (2) add a multi-select for Sub_Category *in the selected Category (1)* (https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)")
 st.write("### (3) show a line chart of sales for the selected items in (2)")
