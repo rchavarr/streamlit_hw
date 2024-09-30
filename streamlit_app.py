@@ -26,18 +26,6 @@ st.write(f"Selected Sub-Categories: {sub_category}")
 st.write("### Input Data and Examples")
 df = pd.read_csv("Superstore_Sales_utf8.csv", parse_dates=True)
 st.dataframe(df)
-
-#Step 3: Show a line chart of sales for the selected items in (2)
-if sub_category:
-    filtered_data = df[(df['Category'] == category) & (df['Sub_Category'].isin(sub_category))]
-    grouped_sales = filtered_data.groupby(['Date', 'Sub_Category'])['Sales'].sum().reset_index()
-    sales_pivot = grouped_sales.pivot(index='Date', columns='Sub_Category', values='Sales')
-
-  
-    st.write(f"Sales Data for selected Sub-Categories: {sub_category}")
-    st.line_chart(sales_pivot)
-else:
-    st.write("Please select at least one Sub-Category to display sales data.")
     
 # This bar chart will not have solid bars--but lines--because the detail data is being graphed independently
 st.bar_chart(df, x="Category", y="Sales")
