@@ -48,7 +48,7 @@ selected_sub_categories = st.multiselect(
     "Sub_Category",
     sub_category_options[category]
 )
-st.write(f"Selected Sub_Categories: {sub_category}")
+st.write(f"Selected Sub_Categories: {selected_sub_categories}")
 
 # Step 3: Show a line chart of sales for the selected items in (2)
 if selected_sub_categories:
