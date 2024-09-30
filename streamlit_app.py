@@ -53,33 +53,6 @@ sub_category = st.multiselect(
 st.write(f"Selected Sub-Categories: {sub_category}")
 
 # Step 3: Show a line chart of sales for the selected items in (2)
-if sub_category:
-    # Filter data for selected Category and Sub-Categories
-    filtered_sales_df = df[(df['Category'] == category) & (df['Sub_Category'].isin(sub_category))]
-
-    # Group by month to calculate total sales for selected sub-categories
-    filtered_sales_df["Order_Date"] = pd.to_datetime(filtered_sales_df["Order_Date"])
-    filtered_sales_df.set_index('Order_Date', inplace=True)
-    
-    sales_by_month_filtered = filtered_sales_df.groupby([pd.Grouper(freq='M'), 'Sub-Category']).sum().reset_index()
-
-    # Create a Plotly figure
-    fig = go.Figure()
-
-    # Add traces for each selected sub-category
-    for sub_cat in sub_category:
-        sub_cat_data = sales_by_month_filtered[sales_by_month_filtered['Sub-Category'] == sub_cat]
-        fig.add_trace(go.Scatter(x=sub_cat_data["Order_Date"], y=sub_cat_data["Sales"], mode='lines', name=sub_cat))
-
-    # Customize the figure layout
-    fig.update_layout(title="Sales by Sub-Category Over Time",
-                      xaxis_title="Order Date",
-                      yaxis_title="Sales",
-                      hovermode="x unified")
-
-    # Display the Plotly chart in Streamlit
-    st.plotly_chart(fig)
-
 
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
 st.write("### (2) add a multi-select for Sub_Category *in the selected Category (1)* (https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)")
