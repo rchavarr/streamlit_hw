@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import math
-import plotly.graph_objects as go
-import plotly.express as px
 
 st.title("Data App Assignment, on Oct 7th")
 
