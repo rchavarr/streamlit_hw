@@ -56,9 +56,6 @@ if sub_category:
     # Filter the original df based on the selected category and sub-category
     filtered_sales_df = df[(df['Category'] == category) & (df['Sub_Category'].isin(sub_category))]
 
-    # Ensure Order_Date is in datetime format, if not already
-    filtered_sales_df["Order_Date"] = pd.to_datetime(filtered_sales_df["Order_Date"])
-
     # Group by month to calculate total sales for selected sub-categories
     sales_by_month_filtered = filtered_sales_df.filter(items=['Sales']).groupby(pd.Grouper(key='Order_Date', freq='M')).sum()
 
