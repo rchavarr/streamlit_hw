@@ -58,7 +58,23 @@ if selected_sub_categories:
     st.line_chart(sales_by_month)
 
 #Step 4: Show three metrics for the selected items in (2): total sales, total profit, and overall profit margin (%)
-
+if selected_sub_categories:
+    # Filter the dataframe based on selected sub-categories
+    filtered_df = df[df['Sub_Category'].isin(selected_sub_categories)]
+    
+    # Calculate total sales
+    total_sales = filtered_df['Sales'].sum()
+    
+    # Calculate total profit
+    total_profit = filtered_df['Profit'].sum()
+    
+    # Calculate profit margin (in percentage)
+    profit_margin = (total_profit / total_sales) * 100 if total_sales != 0 else 0
+    
+    # Display the metrics using st.metric
+    st.metric(label="Total Sales", value=f"${total_sales:,.2f}")
+    st.metric(label="Total Profit", value=f"${total_profit:,.2f}")
+    st.metric(label="Profit Margin (%)", value=f"{profit_margin:.2f}%")
 
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
 st.write("### (2) add a multi-select for Sub_Category *in the selected Category (1)* (https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)")
