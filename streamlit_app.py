@@ -54,7 +54,7 @@ st.write(f"Selected Sub-Categories: {sub_category}")
 # Filter the data further based on the selected sub-categories
 if sub_category:
     # Filter the original df based on the selected category and sub-category
-    filtered_sales_df = df[(df['Category'] == category) & (df['Sub-Category'].isin(sub_category))]
+    filtered_sales_df = df[(df['Category'] == category) & (df['Sub_Category'].isin(sub_category))]
 
     # Ensure Order_Date is in datetime format, if not already
     filtered_sales_df["Order_Date"] = pd.to_datetime(filtered_sales_df["Order_Date"])
