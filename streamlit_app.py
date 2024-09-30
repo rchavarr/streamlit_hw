@@ -24,25 +24,6 @@ sub_category = st.multiselect(
 st.write(f"Selected Sub-Categories: {sub_category}")
 
 #3 Show a line chart of sales for the selected items in (2)
-# Filter the DataFrame based on the selected Category and Sub_Category
-filtered_df = df[(df['Category'] == category) & (df['Sub_Category'].isin(sub_category))]
-
-# Check if there are any results after filtering
-if not filtered_df.empty:
-    # Step 3: Aggregating sales by month
-    filtered_df["Order_Date"] = pd.to_datetime(filtered_df["Order_Date"])  # Ensure datetime format
-    filtered_df.set_index('Order_Date', inplace=True)
-
-    # Group by month and sum sales
-    sales_by_month = filtered_df.filter(items=['Sales']).groupby(pd.Grouper(freq='M')).sum()
-
-    # Display the DataFrame (for reference)
-    st.dataframe(sales_by_month)
-
-    # Step 4: Plot the line chart
-    st.line_chart(sales_by_month, y="Sales")
-else:
-    st.write("No data available for the selected sub-categories.")
 
 st.write("### Input Data and Examples")
 df = pd.read_csv("Superstore_Sales_utf8.csv", parse_dates=True)
