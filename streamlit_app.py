@@ -51,6 +51,19 @@ sub_category = st.multiselect(
 st.write(f"Selected Sub-Categories: {sub_category}")
 
 #3 Show a line chart of sales for the selected items in (2)
+# Filter the data further based on the selected sub-categories
+if selected_sub_categories:
+    filtered_sales_df = filtered_df[filtered_df['Sub-Category'].isin(selected_sub_categories)]
+
+    # Ensure Order_Date is in datetime format, if not already
+    filtered_sales_df["Order_Date"] = pd.to_datetime(filtered_sales_df["Order_Date"])
+
+    # Set the index to the Order_Date and group by month to calculate total sales
+    sales_by_month_filtered = filtered_sales_df.filter(items=['Sales']).groupby(pd.Grouper(key='Order_Date', freq='M')).sum()
+
+    # Display a line chart for the filtered sales data
+    st.line_chart(sales_by_month_filtered, y="Sales")
+
 
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
 st.write("### (2) add a multi-select for Sub_Category *in the selected Category (1)* (https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)")
